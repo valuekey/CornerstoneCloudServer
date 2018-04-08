@@ -1,0 +1,32 @@
+
+{
+    "cornerstoneCloudServerApp": {
+        "cloudApp" : {
+            "home": {
+                "title": "Cloud Apps",
+                "createLabel": "Create a new Cloud App",
+                "createOrEditLabel": "Create or edit a Cloud App"
+            },
+            "created": "A new Cloud App is created with identifier {{ param }}",
+            "updated": "A Cloud App is updated with identifier {{ param }}",
+            "deleted": "A Cloud App is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Cloud App {{ id }}?"
+            },
+            "detail": {
+                "title": "Cloud App"
+            },
+            "name": "Name",
+            "description": "Description",
+            "epgs": "Epgs",
+            "configurations": "Configurations",
+            "uploadFile": "Upload File",
+            "status": "Status",
+            "accountName": "Account Name",
+            "buildFileId": "Build File Id",
+            "resouceMapping": "Resouce Mapping",
+            "buildLog": "Build Log",
+            "appContent": "App Content"
+        }
+    }
+}

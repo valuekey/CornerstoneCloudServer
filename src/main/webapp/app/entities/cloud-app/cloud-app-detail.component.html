@@ -1,0 +1,66 @@
+
+<div *ngIf="cloudApp">
+    <h2><span jhiTranslate="cornerstoneCloudServerApp.cloudApp.detail.title">Cloud App</span> {{cloudApp.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="cornerstoneCloudServerApp.cloudApp.name">Name</span></dt>
+        <dd>
+            <span>{{cloudApp.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="cornerstoneCloudServerApp.cloudApp.description">Description</span></dt>
+        <dd>
+            <span>{{cloudApp.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="cornerstoneCloudServerApp.cloudApp.epgs">Epgs</span></dt>
+        <dd>
+            <span>{{cloudApp.epgs}}</span>
+        </dd>
+        <dt><span jhiTranslate="cornerstoneCloudServerApp.cloudApp.configurations">Configurations</span></dt>
+        <dd>
+            <span>{{cloudApp.configurations}}</span>
+        </dd>
+        <dt><span jhiTranslate="cornerstoneCloudServerApp.cloudApp.uploadFile">Upload File</span></dt>
+        <dd>
+            <span>{{cloudApp.uploadFile}}</span>
+        </dd>
+        <dt><span jhiTranslate="cornerstoneCloudServerApp.cloudApp.status">Status</span></dt>
+        <dd>
+            <span jhiTranslate="{{'cornerstoneCloudServerApp.AppStatus.' + cloudApp.status}}">{{cloudApp.status}}</span>
+        </dd>
+        <dt><span jhiTranslate="cornerstoneCloudServerApp.cloudApp.accountName">Account Name</span></dt>
+        <dd>
+            <span>{{cloudApp.accountName}}</span>
+        </dd>
+        <dt><span jhiTranslate="cornerstoneCloudServerApp.cloudApp.buildFileId">Build File Id</span></dt>
+        <dd>
+            <span>{{cloudApp.buildFileId}}</span>
+        </dd>
+        <dt><span jhiTranslate="cornerstoneCloudServerApp.cloudApp.resouceMapping">Resouce Mapping</span></dt>
+        <dd>
+            <span>{{cloudApp.resouceMapping}}</span>
+        </dd>
+        <dt><span jhiTranslate="cornerstoneCloudServerApp.cloudApp.buildLog">Build Log</span></dt>
+        <dd>
+            <span>{{cloudApp.buildLog}}</span>
+        </dd>
+        <dt><span jhiTranslate="cornerstoneCloudServerApp.cloudApp.appContent">App Content</span></dt>
+        <dd>
+            <span>{{cloudApp.appContent}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'cloud-app/'+ cloudApp.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

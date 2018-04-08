@@ -1,0 +1,11 @@
+{
+    "cornerstoneCloudServerApp": {
+        "AppStatus" : {
+            "null": "",
+            "APP_BUILDING": "APP_BUILDING",
+            "APP_BUILD_SUCCESS": "APP_BUILD_SUCCESS",
+            "APP_BUILD_FAILED": "APP_BUILD_FAILED",
+            "APP_NOT_SUPPORT": "APP_NOT_SUPPORT"
+        }
+    }
+}
