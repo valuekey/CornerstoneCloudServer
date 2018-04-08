@@ -1,0 +1,36 @@
+
+<div *ngIf="cloudMeuConfiguration">
+    <h2><span jhiTranslate="cornerstoneCloudServerApp.cloudMeuConfiguration.detail.title">Cloud Meu Configuration</span> {{cloudMeuConfiguration.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="cornerstoneCloudServerApp.cloudMeuConfiguration.filename">Filename</span></dt>
+        <dd>
+            <span>{{cloudMeuConfiguration.filename}}</span>
+        </dd>
+        <dt><span jhiTranslate="cornerstoneCloudServerApp.cloudMeuConfiguration.content">Content</span></dt>
+        <dd>
+            <span>{{cloudMeuConfiguration.content}}</span>
+        </dd>
+        <dt><span jhiTranslate="cornerstoneCloudServerApp.cloudMeuConfiguration.cloudMeu">Cloud Meu</span></dt>
+        <dd>
+            <div *ngIf="cloudMeuConfiguration.cloudMeu">
+                <a [routerLink]="['/cloud-meu', cloudMeuConfiguration.cloudMeu?.id]">{{cloudMeuConfiguration.cloudMeu?.meu}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'cloud-meu-configuration/'+ cloudMeuConfiguration.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

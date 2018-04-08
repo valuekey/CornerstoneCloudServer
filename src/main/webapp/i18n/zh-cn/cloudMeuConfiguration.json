@@ -1,0 +1,24 @@
+
+{
+    "cornerstoneCloudServerApp": {
+        "cloudMeuConfiguration" : {
+            "home": {
+                "title": "Cloud Meu Configurations",
+                "createLabel": "创建新 Cloud Meu Configuration",
+                "createOrEditLabel": "创建或编辑 Cloud Meu Configuration"
+            },
+            "created": "Cloud Meu Configuration {{ param }} 创建成功",
+            "updated": "Cloud Meu Configuration {{ param }} 更新成功",
+            "deleted": "Cloud Meu Configuration {{ param }} 删除成功",
+            "delete": {
+                "question": "你确定要删除 Cloud Meu Configuration {{ id }} 吗？"
+            },
+            "detail": {
+                "title": "Cloud Meu Configuration"
+            },
+            "filename": "Filename",
+            "content": "Content",
+            "cloudMeu": "Cloud Meu"
+        }
+    }
+}

@@ -1,0 +1,28 @@
+
+{
+    "cornerstoneCloudServerApp": {
+        "cloudMeu" : {
+            "home": {
+                "title": "Cloud Meus",
+                "createLabel": "Create a new Cloud Meu",
+                "createOrEditLabel": "Create or edit a Cloud Meu"
+            },
+            "created": "A new Cloud Meu is created with identifier {{ param }}",
+            "updated": "A Cloud Meu is updated with identifier {{ param }}",
+            "deleted": "A Cloud Meu is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Cloud Meu {{ id }}?"
+            },
+            "detail": {
+                "title": "Cloud Meu"
+            },
+            "groupId": "Group Id",
+            "name": "Name",
+            "version": "Version",
+            "type": "Type",
+            "meuDefinition": "Meu Definition",
+            "fileId": "File Id",
+            "configuration": "Configuration"
+        }
+    }
+}

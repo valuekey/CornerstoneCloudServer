@@ -1,0 +1,45 @@
+entity CloudMeu {
+	groupId String required, 
+    name String required,
+    version String required,
+    type String,
+    meuDefinition TextBlob required,
+    fileId String required
+}
+
+entity CloudMeuConfiguration {
+    filename String,
+    content TextBlob
+}
+
+relationship OneToMany {
+  CloudMeu{configuration(config)} to CloudMeuConfiguration{cloudMeu(meu) required}
+}
+
+
+entity CloudEpg {
+	name String required, 
+    description String,
+    epgDefinition TextBlob,
+    accountName String required,
+    urlMappings TextBlob,
+    graphInfo TextBlob
+}
+
+enum AppStatus {
+	APP_BUILDING, APP_BUILD_SUCCESS, APP_BUILD_FAILED, APP_NOT_SUPPORT
+}
+
+entity CloudApp {
+	name String required, 
+    description String,
+    epgs String required,
+    configurations TextBlob,
+    uploadFile TextBlob,
+    status AppStatus,
+ 	accountName String required, 
+    buildFileId String,
+    resouceMapping TextBlob,
+    buildLog TextBlob,
+    appContent TextBlob
+}

@@ -1,0 +1,85 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myCloudMeuLabel" jhiTranslate="cornerstoneCloudServerApp.cloudMeu.home.createOrEditLabel">Create or edit a Cloud Meu</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!cloudMeu.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="cloudMeu.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cornerstoneCloudServerApp.cloudMeu.groupId" for="field_groupId">Group Id</label>
+            <input type="text" class="form-control" name="groupId" id="field_groupId"
+                [(ngModel)]="cloudMeu.groupId" required/>
+            <div [hidden]="!(editForm.controls.groupId?.dirty && editForm.controls.groupId?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.groupId?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cornerstoneCloudServerApp.cloudMeu.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                [(ngModel)]="cloudMeu.name" required/>
+            <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.name?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cornerstoneCloudServerApp.cloudMeu.version" for="field_version">Version</label>
+            <input type="text" class="form-control" name="version" id="field_version"
+                [(ngModel)]="cloudMeu.version" required/>
+            <div [hidden]="!(editForm.controls.version?.dirty && editForm.controls.version?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.version?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cornerstoneCloudServerApp.cloudMeu.type" for="field_type">Type</label>
+            <input type="text" class="form-control" name="type" id="field_type"
+                [(ngModel)]="cloudMeu.type" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cornerstoneCloudServerApp.cloudMeu.meuDefinition" for="field_meuDefinition">Meu Definition</label>
+            <textarea class="form-control" name="meuDefinition" id="field_meuDefinition"
+                [(ngModel)]="cloudMeu.meuDefinition" required></textarea>
+            <div [hidden]="!(editForm.controls.meuDefinition?.dirty && editForm.controls.meuDefinition?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.meuDefinition?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cornerstoneCloudServerApp.cloudMeu.fileId" for="field_fileId">File Id</label>
+            <input type="text" class="form-control" name="fileId" id="field_fileId"
+                [(ngModel)]="cloudMeu.fileId" required/>
+            <div [hidden]="!(editForm.controls.fileId?.dirty && editForm.controls.fileId?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.fileId?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

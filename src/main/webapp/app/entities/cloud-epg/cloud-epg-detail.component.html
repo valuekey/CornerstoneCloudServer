@@ -1,0 +1,46 @@
+
+<div *ngIf="cloudEpg">
+    <h2><span jhiTranslate="cornerstoneCloudServerApp.cloudEpg.detail.title">Cloud Epg</span> {{cloudEpg.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="cornerstoneCloudServerApp.cloudEpg.name">Name</span></dt>
+        <dd>
+            <span>{{cloudEpg.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="cornerstoneCloudServerApp.cloudEpg.description">Description</span></dt>
+        <dd>
+            <span>{{cloudEpg.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="cornerstoneCloudServerApp.cloudEpg.epgDefinition">Epg Definition</span></dt>
+        <dd>
+            <span>{{cloudEpg.epgDefinition}}</span>
+        </dd>
+        <dt><span jhiTranslate="cornerstoneCloudServerApp.cloudEpg.accountName">Account Name</span></dt>
+        <dd>
+            <span>{{cloudEpg.accountName}}</span>
+        </dd>
+        <dt><span jhiTranslate="cornerstoneCloudServerApp.cloudEpg.urlMappings">Url Mappings</span></dt>
+        <dd>
+            <span>{{cloudEpg.urlMappings}}</span>
+        </dd>
+        <dt><span jhiTranslate="cornerstoneCloudServerApp.cloudEpg.graphInfo">Graph Info</span></dt>
+        <dd>
+            <span>{{cloudEpg.graphInfo}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'cloud-epg/'+ cloudEpg.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

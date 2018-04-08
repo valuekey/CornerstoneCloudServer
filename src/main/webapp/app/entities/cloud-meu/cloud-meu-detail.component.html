@@ -1,0 +1,46 @@
+
+<div *ngIf="cloudMeu">
+    <h2><span jhiTranslate="cornerstoneCloudServerApp.cloudMeu.detail.title">Cloud Meu</span> {{cloudMeu.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="cornerstoneCloudServerApp.cloudMeu.groupId">Group Id</span></dt>
+        <dd>
+            <span>{{cloudMeu.groupId}}</span>
+        </dd>
+        <dt><span jhiTranslate="cornerstoneCloudServerApp.cloudMeu.name">Name</span></dt>
+        <dd>
+            <span>{{cloudMeu.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="cornerstoneCloudServerApp.cloudMeu.version">Version</span></dt>
+        <dd>
+            <span>{{cloudMeu.version}}</span>
+        </dd>
+        <dt><span jhiTranslate="cornerstoneCloudServerApp.cloudMeu.type">Type</span></dt>
+        <dd>
+            <span>{{cloudMeu.type}}</span>
+        </dd>
+        <dt><span jhiTranslate="cornerstoneCloudServerApp.cloudMeu.meuDefinition">Meu Definition</span></dt>
+        <dd>
+            <span>{{cloudMeu.meuDefinition}}</span>
+        </dd>
+        <dt><span jhiTranslate="cornerstoneCloudServerApp.cloudMeu.fileId">File Id</span></dt>
+        <dd>
+            <span>{{cloudMeu.fileId}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'cloud-meu/'+ cloudMeu.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>
