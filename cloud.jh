@@ -3,8 +3,12 @@ entity CloudMeu {
     name String required,
     version String required,
     type String,
-    meuDefinition TextBlob required,
-    fileId String required
+    meuDefinition TextBlob required
+}
+
+entity CloudMeuZip {
+	fileName String required, 
+	zipFile Blob required
 }
 
 entity CloudMeuConfiguration {
@@ -13,7 +17,11 @@ entity CloudMeuConfiguration {
 }
 
 relationship OneToMany {
-  CloudMeu{configuration(config)} to CloudMeuConfiguration{cloudMeu(meu) required}
+  CloudMeu{configuration} to CloudMeuConfiguration{cloudMeu required}
+}
+
+relationship OneToOne {
+  CloudMeu{cloudMeuZip} to CloudMeuZip{cloudMeu required}
 }
 
 
