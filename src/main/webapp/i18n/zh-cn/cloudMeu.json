@@ -21,7 +21,7 @@
             "version": "Version",
             "type": "Type",
             "meuDefinition": "Meu Definition",
-            "fileId": "File Id",
+            "cloudMeuZip": "Cloud Meu Zip",
             "configuration": "Configuration"
         }
     }

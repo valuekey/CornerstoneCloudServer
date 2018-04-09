@@ -15,7 +15,7 @@
         <dt><span jhiTranslate="cornerstoneCloudServerApp.cloudMeuConfiguration.cloudMeu">Cloud Meu</span></dt>
         <dd>
             <div *ngIf="cloudMeuConfiguration.cloudMeu">
-                <a [routerLink]="['/cloud-meu', cloudMeuConfiguration.cloudMeu?.id]">{{cloudMeuConfiguration.cloudMeu?.meu}}</a>
+                <a [routerLink]="['/cloud-meu', cloudMeuConfiguration.cloudMeu?.id]">{{cloudMeuConfiguration.cloudMeu?.id}}</a>
             </div>
         </dd>
     </dl>

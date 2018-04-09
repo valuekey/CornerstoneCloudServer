@@ -8,7 +8,7 @@ export class CloudMeu implements BaseEntity {
         public version?: string,
         public type?: string,
         public meuDefinition?: any,
-        public fileId?: string,
+        public cloudMeuZip?: BaseEntity,
         public configurations?: BaseEntity[],
     ) {
     }

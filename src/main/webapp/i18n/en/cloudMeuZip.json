@@ -1,0 +1,24 @@
+
+{
+    "cornerstoneCloudServerApp": {
+        "cloudMeuZip" : {
+            "home": {
+                "title": "Cloud Meu Zips",
+                "createLabel": "Create a new Cloud Meu Zip",
+                "createOrEditLabel": "Create or edit a Cloud Meu Zip"
+            },
+            "created": "A new Cloud Meu Zip is created with identifier {{ param }}",
+            "updated": "A Cloud Meu Zip is updated with identifier {{ param }}",
+            "deleted": "A Cloud Meu Zip is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Cloud Meu Zip {{ id }}?"
+            },
+            "detail": {
+                "title": "Cloud Meu Zip"
+            },
+            "fileName": "File Name",
+            "zipFile": "Zip File",
+            "cloudMeu": "Cloud Meu"
+        }
+    }
+}

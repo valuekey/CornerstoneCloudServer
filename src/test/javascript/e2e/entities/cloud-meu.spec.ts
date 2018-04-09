@@ -43,8 +43,7 @@ describe('CloudMeu e2e test', () => {
         expect(cloudMeuDialogPage.getTypeInput()).toMatch('type');
         cloudMeuDialogPage.setMeuDefinitionInput('meuDefinition');
         expect(cloudMeuDialogPage.getMeuDefinitionInput()).toMatch('meuDefinition');
-        cloudMeuDialogPage.setFileIdInput('fileId');
-        expect(cloudMeuDialogPage.getFileIdInput()).toMatch('fileId');
+        cloudMeuDialogPage.cloudMeuZipSelectLastOption();
         cloudMeuDialogPage.save();
         expect(cloudMeuDialogPage.getSaveButton().isPresent()).toBeFalsy();
     });
@@ -76,7 +75,7 @@ export class CloudMeuDialogPage {
     versionInput = element(by.css('input#field_version'));
     typeInput = element(by.css('input#field_type'));
     meuDefinitionInput = element(by.css('textarea#field_meuDefinition'));
-    fileIdInput = element(by.css('input#field_fileId'));
+    cloudMeuZipSelect = element(by.css('select#field_cloudMeuZip'));
 
     getModalTitle() {
         return this.modalTitle.getAttribute('jhiTranslate');
@@ -122,12 +121,20 @@ export class CloudMeuDialogPage {
         return this.meuDefinitionInput.getAttribute('value');
     };
 
-    setFileIdInput = function(fileId) {
-        this.fileIdInput.sendKeys(fileId);
+    cloudMeuZipSelectLastOption = function() {
+        this.cloudMeuZipSelect.all(by.tagName('option')).last().click();
     };
 
-    getFileIdInput = function() {
-        return this.fileIdInput.getAttribute('value');
+    cloudMeuZipSelectOption = function(option) {
+        this.cloudMeuZipSelect.sendKeys(option);
+    };
+
+    getCloudMeuZipSelect = function() {
+        return this.cloudMeuZipSelect;
+    };
+
+    getCloudMeuZipSelectedOption = function() {
+        return this.cloudMeuZipSelect.element(by.css('option:checked')).getText();
     };
 
     save() {

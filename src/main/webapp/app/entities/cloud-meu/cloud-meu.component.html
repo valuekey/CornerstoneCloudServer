@@ -22,7 +22,7 @@
             <th><span jhiTranslate="cornerstoneCloudServerApp.cloudMeu.version">Version</span></th>
             <th><span jhiTranslate="cornerstoneCloudServerApp.cloudMeu.type">Type</span></th>
             <th><span jhiTranslate="cornerstoneCloudServerApp.cloudMeu.meuDefinition">Meu Definition</span></th>
-            <th><span jhiTranslate="cornerstoneCloudServerApp.cloudMeu.fileId">File Id</span></th>
+            <th><span jhiTranslate="cornerstoneCloudServerApp.cloudMeu.cloudMeuZip">Cloud Meu Zip</span></th>
             <th></th>
             </tr>
             </thead>
@@ -34,7 +34,11 @@
                 <td>{{cloudMeu.version}}</td>
                 <td>{{cloudMeu.type}}</td>
                 <td>{{cloudMeu.meuDefinition}}</td>
-                <td>{{cloudMeu.fileId}}</td>
+                <td>
+                    <div *ngIf="cloudMeu.cloudMeuZip">
+                        <a [routerLink]="['../cloud-meu-zip', cloudMeu.cloudMeuZip?.id ]" >{{cloudMeu.cloudMeuZip?.id}}</a>
+                    </div>
+                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

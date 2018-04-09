@@ -54,9 +54,6 @@ public class CloudMeuResourceIntTest {
     private static final String DEFAULT_MEU_DEFINITION = "AAAAAAAAAA";
     private static final String UPDATED_MEU_DEFINITION = "BBBBBBBBBB";
 
-    private static final String DEFAULT_FILE_ID = "AAAAAAAAAA";
-    private static final String UPDATED_FILE_ID = "BBBBBBBBBB";
-
     @Autowired
     private CloudMeuRepository cloudMeuRepository;
 
@@ -99,8 +96,7 @@ public class CloudMeuResourceIntTest {
             .name(DEFAULT_NAME)
             .version(DEFAULT_VERSION)
             .type(DEFAULT_TYPE)
-            .meuDefinition(DEFAULT_MEU_DEFINITION)
-            .fileId(DEFAULT_FILE_ID);
+            .meuDefinition(DEFAULT_MEU_DEFINITION);
         return cloudMeu;
     }
 
@@ -129,7 +125,6 @@ public class CloudMeuResourceIntTest {
         assertThat(testCloudMeu.getVersion()).isEqualTo(DEFAULT_VERSION);
         assertThat(testCloudMeu.getType()).isEqualTo(DEFAULT_TYPE);
         assertThat(testCloudMeu.getMeuDefinition()).isEqualTo(DEFAULT_MEU_DEFINITION);
-        assertThat(testCloudMeu.getFileId()).isEqualTo(DEFAULT_FILE_ID);
     }
 
     @Test
@@ -225,24 +220,6 @@ public class CloudMeuResourceIntTest {
 
     @Test
     @Transactional
-    public void checkFileIdIsRequired() throws Exception {
-        int databaseSizeBeforeTest = cloudMeuRepository.findAll().size();
-        // set the field null
-        cloudMeu.setFileId(null);
-
-        // Create the CloudMeu, which fails.
-
-        restCloudMeuMockMvc.perform(post("/api/cloud-meus")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(cloudMeu)))
-            .andExpect(status().isBadRequest());
-
-        List<CloudMeu> cloudMeuList = cloudMeuRepository.findAll();
-        assertThat(cloudMeuList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
     public void getAllCloudMeus() throws Exception {
         // Initialize the database
         cloudMeuRepository.saveAndFlush(cloudMeu);
@@ -256,8 +233,7 @@ public class CloudMeuResourceIntTest {
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
             .andExpect(jsonPath("$.[*].version").value(hasItem(DEFAULT_VERSION.toString())))
             .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE.toString())))
-            .andExpect(jsonPath("$.[*].meuDefinition").value(hasItem(DEFAULT_MEU_DEFINITION.toString())))
-            .andExpect(jsonPath("$.[*].fileId").value(hasItem(DEFAULT_FILE_ID.toString())));
+            .andExpect(jsonPath("$.[*].meuDefinition").value(hasItem(DEFAULT_MEU_DEFINITION.toString())));
     }
 
     @Test
@@ -275,8 +251,7 @@ public class CloudMeuResourceIntTest {
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
             .andExpect(jsonPath("$.version").value(DEFAULT_VERSION.toString()))
             .andExpect(jsonPath("$.type").value(DEFAULT_TYPE.toString()))
-            .andExpect(jsonPath("$.meuDefinition").value(DEFAULT_MEU_DEFINITION.toString()))
-            .andExpect(jsonPath("$.fileId").value(DEFAULT_FILE_ID.toString()));
+            .andExpect(jsonPath("$.meuDefinition").value(DEFAULT_MEU_DEFINITION.toString()));
     }
 
     @Test
@@ -303,8 +278,7 @@ public class CloudMeuResourceIntTest {
             .name(UPDATED_NAME)
             .version(UPDATED_VERSION)
             .type(UPDATED_TYPE)
-            .meuDefinition(UPDATED_MEU_DEFINITION)
-            .fileId(UPDATED_FILE_ID);
+            .meuDefinition(UPDATED_MEU_DEFINITION);
 
         restCloudMeuMockMvc.perform(put("/api/cloud-meus")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -320,7 +294,6 @@ public class CloudMeuResourceIntTest {
         assertThat(testCloudMeu.getVersion()).isEqualTo(UPDATED_VERSION);
         assertThat(testCloudMeu.getType()).isEqualTo(UPDATED_TYPE);
         assertThat(testCloudMeu.getMeuDefinition()).isEqualTo(UPDATED_MEU_DEFINITION);
-        assertThat(testCloudMeu.getFileId()).isEqualTo(UPDATED_FILE_ID);
     }
 
     @Test

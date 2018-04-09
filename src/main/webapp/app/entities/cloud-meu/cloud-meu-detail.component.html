@@ -24,9 +24,11 @@
         <dd>
             <span>{{cloudMeu.meuDefinition}}</span>
         </dd>
-        <dt><span jhiTranslate="cornerstoneCloudServerApp.cloudMeu.fileId">File Id</span></dt>
+        <dt><span jhiTranslate="cornerstoneCloudServerApp.cloudMeu.cloudMeuZip">Cloud Meu Zip</span></dt>
         <dd>
-            <span>{{cloudMeu.fileId}}</span>
+            <div *ngIf="cloudMeu.cloudMeuZip">
+                <a [routerLink]="['/cloud-meu-zip', cloudMeu.cloudMeuZip?.id]">{{cloudMeu.cloudMeuZip?.id}}</a>
+            </div>
         </dd>
     </dl>
 
