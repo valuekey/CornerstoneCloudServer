@@ -2,6 +2,14 @@
     "fluentMethods": true,
     "relationships": [
         {
+            "relationshipType": "one-to-one",
+            "relationshipName": "cloudMeuZip",
+            "otherEntityName": "cloudMeuZip",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "cloudMeu"
+        },
+        {
             "relationshipType": "one-to-many",
             "relationshipName": "configuration",
             "otherEntityName": "cloudMeuConfiguration",
@@ -38,13 +46,6 @@
             "fieldName": "meuDefinition",
             "fieldType": "byte[]",
             "fieldTypeBlobContent": "text",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "fileId",
-            "fieldType": "String",
             "fieldValidateRules": [
                 "required"
             ]

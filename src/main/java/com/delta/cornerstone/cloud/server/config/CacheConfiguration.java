@@ -47,6 +47,7 @@ public class CacheConfiguration {
             cm.createCache(com.delta.cornerstone.cloud.server.domain.CloudMeuConfiguration.class.getName(), jcacheConfiguration);
             cm.createCache(com.delta.cornerstone.cloud.server.domain.CloudEpg.class.getName(), jcacheConfiguration);
             cm.createCache(com.delta.cornerstone.cloud.server.domain.CloudApp.class.getName(), jcacheConfiguration);
+            cm.createCache(com.delta.cornerstone.cloud.server.domain.CloudMeuZip.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

@@ -4,11 +4,12 @@ import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { JhiEventManager, JhiDataUtils } from 'ng-jhipster';
+import { JhiEventManager, JhiAlertService, JhiDataUtils } from 'ng-jhipster';
 
 import { CloudMeu } from './cloud-meu.model';
 import { CloudMeuPopupService } from './cloud-meu-popup.service';
 import { CloudMeuService } from './cloud-meu.service';
+import { CloudMeuZip, CloudMeuZipService } from '../cloud-meu-zip';
 
 @Component({
     selector: 'jhi-cloud-meu-dialog',
@@ -19,16 +20,33 @@ export class CloudMeuDialogComponent implements OnInit {
     cloudMeu: CloudMeu;
     isSaving: boolean;
 
+    cloudmeuzips: CloudMeuZip[];
+
     constructor(
         public activeModal: NgbActiveModal,
         private dataUtils: JhiDataUtils,
+        private jhiAlertService: JhiAlertService,
         private cloudMeuService: CloudMeuService,
+        private cloudMeuZipService: CloudMeuZipService,
         private eventManager: JhiEventManager
     ) {
     }
 
     ngOnInit() {
         this.isSaving = false;
+        this.cloudMeuZipService
+            .query({filter: 'cloudmeu-is-null'})
+            .subscribe((res: HttpResponse<CloudMeuZip[]>) => {
+                if (!this.cloudMeu.cloudMeuZip || !this.cloudMeu.cloudMeuZip.id) {
+                    this.cloudmeuzips = res.body;
+                } else {
+                    this.cloudMeuZipService
+                        .find(this.cloudMeu.cloudMeuZip.id)
+                        .subscribe((subRes: HttpResponse<CloudMeuZip>) => {
+                            this.cloudmeuzips = [subRes.body].concat(res.body);
+                        }, (subRes: HttpErrorResponse) => this.onError(subRes.message));
+                }
+            }, (res: HttpErrorResponse) => this.onError(res.message));
     }
 
     byteSize(field) {
@@ -71,6 +89,14 @@ export class CloudMeuDialogComponent implements OnInit {
 
     private onSaveError() {
         this.isSaving = false;
+    }
+
+    private onError(error: any) {
+        this.jhiAlertService.error(error.message, null, null);
+    }
+
+    trackCloudMeuZipById(index: number, item: CloudMeuZip) {
+        return item.id;
     }
 }
 

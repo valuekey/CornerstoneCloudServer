@@ -27,7 +27,7 @@
             <label class="form-control-label" jhiTranslate="cornerstoneCloudServerApp.cloudMeuConfiguration.cloudMeu" for="field_cloudMeu">Cloud Meu</label>
             <select class="form-control" id="field_cloudMeu" name="cloudMeu" [(ngModel)]="cloudMeuConfiguration.cloudMeu"  required>
                 <option *ngIf="!editForm.value.cloudMeu" [ngValue]="null" selected></option>
-                <option [ngValue]="cloudMeuOption.id === cloudMeuConfiguration.cloudMeu?.id ? cloudMeuConfiguration.cloudMeu : cloudMeuOption" *ngFor="let cloudMeuOption of cloudmeus; trackBy: trackCloudMeuById">{{cloudMeuOption.meu}}</option>
+                <option [ngValue]="cloudMeuOption.id === cloudMeuConfiguration.cloudMeu?.id ? cloudMeuConfiguration.cloudMeu : cloudMeuOption" *ngFor="let cloudMeuOption of cloudmeus; trackBy: trackCloudMeuById">{{cloudMeuOption.id}}</option>
             </select>
         </div>
         <div [hidden]="!(editForm.controls.cloudMeu?.dirty && editForm.controls.cloudMeu?.invalid)">

@@ -4,6 +4,7 @@ import { CornerstoneCloudServerCloudMeuModule } from './cloud-meu/cloud-meu.modu
 import { CornerstoneCloudServerCloudMeuConfigurationModule } from './cloud-meu-configuration/cloud-meu-configuration.module';
 import { CornerstoneCloudServerCloudEpgModule } from './cloud-epg/cloud-epg.module';
 import { CornerstoneCloudServerCloudAppModule } from './cloud-app/cloud-app.module';
+import { CornerstoneCloudServerCloudMeuZipModule } from './cloud-meu-zip/cloud-meu-zip.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -12,6 +13,7 @@ import { CornerstoneCloudServerCloudAppModule } from './cloud-app/cloud-app.modu
         CornerstoneCloudServerCloudMeuConfigurationModule,
         CornerstoneCloudServerCloudEpgModule,
         CornerstoneCloudServerCloudAppModule,
+        CornerstoneCloudServerCloudMeuZipModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

@@ -6,7 +6,7 @@
             "relationshipValidateRules": "required",
             "relationshipName": "cloudMeu",
             "otherEntityName": "cloudMeu",
-            "otherEntityField": "meu"
+            "otherEntityField": "id"
         }
     ],
     "fields": [

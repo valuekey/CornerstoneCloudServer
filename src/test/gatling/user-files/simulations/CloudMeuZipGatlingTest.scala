@@ -7,9 +7,9 @@ import org.slf4j.LoggerFactory
 import scala.concurrent.duration._
 
 /**
- * Performance test for the CloudMeu entity.
+ * Performance test for the CloudMeuZip entity.
  */
-class CloudMeuGatlingTest extends Simulation {
+class CloudMeuZipGatlingTest extends Simulation {
 
     val context: LoggerContext = LoggerFactory.getILoggerFactory.asInstanceOf[LoggerContext]
     // Log all HTTP requests
@@ -42,7 +42,7 @@ class CloudMeuGatlingTest extends Simulation {
         "Authorization" -> "${access_token}"
     )
 
-    val scn = scenario("Test the CloudMeu entity")
+    val scn = scenario("Test the CloudMeuZip entity")
         .exec(http("First unauthenticated request")
         .get("/api/account")
         .headers(headers_http)
@@ -60,26 +60,26 @@ class CloudMeuGatlingTest extends Simulation {
         .check(status.is(200)))
         .pause(10)
         .repeat(2) {
-            exec(http("Get all cloudMeus")
-            .get("/api/cloud-meus")
+            exec(http("Get all cloudMeuZips")
+            .get("/api/cloud-meu-zips")
             .headers(headers_http_authenticated)
             .check(status.is(200)))
             .pause(10 seconds, 20 seconds)
-            .exec(http("Create new cloudMeu")
-            .post("/api/cloud-meus")
+            .exec(http("Create new cloudMeuZip")
+            .post("/api/cloud-meu-zips")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "groupId":"SAMPLE_TEXT", "name":"SAMPLE_TEXT", "version":"SAMPLE_TEXT", "type":"SAMPLE_TEXT", "meuDefinition":null}""")).asJSON
+            .body(StringBody("""{"id":null, "fileName":"SAMPLE_TEXT", "zipFile":null}""")).asJSON
             .check(status.is(201))
-            .check(headerRegex("Location", "(.*)").saveAs("new_cloudMeu_url"))).exitHereIfFailed
+            .check(headerRegex("Location", "(.*)").saveAs("new_cloudMeuZip_url"))).exitHereIfFailed
             .pause(10)
             .repeat(5) {
-                exec(http("Get created cloudMeu")
-                .get("${new_cloudMeu_url}")
+                exec(http("Get created cloudMeuZip")
+                .get("${new_cloudMeuZip_url}")
                 .headers(headers_http_authenticated))
                 .pause(10)
             }
-            .exec(http("Delete created cloudMeu")
-            .delete("${new_cloudMeu_url}")
+            .exec(http("Delete created cloudMeuZip")
+            .delete("${new_cloudMeuZip_url}")
             .headers(headers_http_authenticated))
             .pause(10)
         }

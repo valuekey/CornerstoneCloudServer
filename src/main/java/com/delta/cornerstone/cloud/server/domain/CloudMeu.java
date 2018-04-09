@@ -47,9 +47,9 @@ public class CloudMeu implements Serializable {
     @Column(name = "meu_definition", nullable = false)
     private String meuDefinition;
 
-    @NotNull
-    @Column(name = "file_id", nullable = false)
-    private String fileId;
+    @OneToOne
+    @JoinColumn(unique = true)
+    private CloudMeuZip cloudMeuZip;
 
     @OneToMany(mappedBy = "cloudMeu")
     @JsonIgnore
@@ -130,17 +130,17 @@ public class CloudMeu implements Serializable {
         this.meuDefinition = meuDefinition;
     }
 
-    public String getFileId() {
-        return fileId;
+    public CloudMeuZip getCloudMeuZip() {
+        return cloudMeuZip;
     }
 
-    public CloudMeu fileId(String fileId) {
-        this.fileId = fileId;
+    public CloudMeu cloudMeuZip(CloudMeuZip cloudMeuZip) {
+        this.cloudMeuZip = cloudMeuZip;
         return this;
     }
 
-    public void setFileId(String fileId) {
-        this.fileId = fileId;
+    public void setCloudMeuZip(CloudMeuZip cloudMeuZip) {
+        this.cloudMeuZip = cloudMeuZip;
     }
 
     public Set<CloudMeuConfiguration> getConfigurations() {
@@ -198,7 +198,6 @@ public class CloudMeu implements Serializable {
             ", version='" + getVersion() + "'" +
             ", type='" + getType() + "'" +
             ", meuDefinition='" + getMeuDefinition() + "'" +
-            ", fileId='" + getFileId() + "'" +
             "}";
     }
 }

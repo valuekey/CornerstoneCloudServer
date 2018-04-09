@@ -61,18 +61,14 @@
                 </small>
             </div>
         </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="cornerstoneCloudServerApp.cloudMeu.fileId" for="field_fileId">File Id</label>
-            <input type="text" class="form-control" name="fileId" id="field_fileId"
-                [(ngModel)]="cloudMeu.fileId" required/>
-            <div [hidden]="!(editForm.controls.fileId?.dirty && editForm.controls.fileId?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.fileId?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
-                </small>
-            </div>
-        </div>
 
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cornerstoneCloudServerApp.cloudMeu.cloudMeuZip" for="field_cloudMeuZip">Cloud Meu Zip</label>
+            <select class="form-control" id="field_cloudMeuZip" name="cloudMeuZip" [(ngModel)]="cloudMeu.cloudMeuZip">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="cloudMeuZipOption.id === cloudMeu.cloudMeuZip?.id ? cloudMeu.cloudMeuZip : cloudMeuZipOption" *ngFor="let cloudMeuZipOption of cloudmeuzips; trackBy: trackCloudMeuZipById">{{cloudMeuZipOption.id}}</option>
+            </select>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">

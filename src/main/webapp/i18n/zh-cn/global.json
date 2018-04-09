@@ -11,6 +11,7 @@
                 "cloudMeuConfiguration": "Cloud Meu Configuration",
                 "cloudEpg": "Cloud Epg",
                 "cloudApp": "Cloud App",
+                "cloudMeuZip": "Cloud Meu Zip",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

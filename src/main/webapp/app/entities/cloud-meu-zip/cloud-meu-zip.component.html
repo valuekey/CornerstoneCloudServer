@@ -1,10 +1,10 @@
 <div>
     <h2>
-        <span jhiTranslate="cornerstoneCloudServerApp.cloudMeuConfiguration.home.title">Cloud Meu Configurations</span>
-        <button class="btn btn-primary float-right jh-create-entity create-cloud-meu-configuration" [routerLink]="['/', { outlets: { popup: ['cloud-meu-configuration-new'] } }]">
+        <span jhiTranslate="cornerstoneCloudServerApp.cloudMeuZip.home.title">Cloud Meu Zips</span>
+        <button class="btn btn-primary float-right jh-create-entity create-cloud-meu-zip" [routerLink]="['/', { outlets: { popup: ['cloud-meu-zip-new'] } }]">
             <span class="fa fa-plus"></span>
-            <span  jhiTranslate="cornerstoneCloudServerApp.cloudMeuConfiguration.home.createLabel">
-            Create new Cloud Meu Configuration
+            <span  jhiTranslate="cornerstoneCloudServerApp.cloudMeuZip.home.createLabel">
+            Create new Cloud Meu Zip
             </span>
         </button>
     </h2>
@@ -12,37 +12,34 @@
     <div class="row">
     </div>
     <br/>
-    <div class="table-responsive" *ngIf="cloudMeuConfigurations">
+    <div class="table-responsive" *ngIf="cloudMeuZips">
         <table class="table table-striped">
             <thead>
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="cornerstoneCloudServerApp.cloudMeuConfiguration.filename">Filename</span></th>
-            <th><span jhiTranslate="cornerstoneCloudServerApp.cloudMeuConfiguration.content">Content</span></th>
-            <th><span jhiTranslate="cornerstoneCloudServerApp.cloudMeuConfiguration.cloudMeu">Cloud Meu</span></th>
+            <th><span jhiTranslate="cornerstoneCloudServerApp.cloudMeuZip.fileName">File Name</span></th>
+            <th><span jhiTranslate="cornerstoneCloudServerApp.cloudMeuZip.zipFile">Zip File</span></th>
             <th></th>
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let cloudMeuConfiguration of cloudMeuConfigurations ;trackBy: trackId">
-                <td><a [routerLink]="['../cloud-meu-configuration', cloudMeuConfiguration.id ]">{{cloudMeuConfiguration.id}}</a></td>
-                <td>{{cloudMeuConfiguration.filename}}</td>
-                <td>{{cloudMeuConfiguration.content}}</td>
+            <tr *ngFor="let cloudMeuZip of cloudMeuZips ;trackBy: trackId">
+                <td><a [routerLink]="['../cloud-meu-zip', cloudMeuZip.id ]">{{cloudMeuZip.id}}</a></td>
+                <td>{{cloudMeuZip.fileName}}</td>
                 <td>
-                    <div *ngIf="cloudMeuConfiguration.cloudMeu">
-                        <a [routerLink]="['../cloud-meu', cloudMeuConfiguration.cloudMeu?.id ]" >{{cloudMeuConfiguration.cloudMeu?.id}}</a>
-                    </div>
+                    <a *ngIf="cloudMeuZip.zipFile" (click)="openFile(cloudMeuZip.zipFileContentType, cloudMeuZip.zipFile)" jhiTranslate="entity.action.open">open</a>
+                    <span *ngIf="cloudMeuZip.zipFile">{{cloudMeuZip.zipFileContentType}}, {{byteSize(cloudMeuZip.zipFile)}}</span>
                 </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
-                                [routerLink]="['../cloud-meu-configuration', cloudMeuConfiguration.id ]"
+                                [routerLink]="['../cloud-meu-zip', cloudMeuZip.id ]"
                                 class="btn btn-info btn-sm">
                             <span class="fa fa-eye"></span>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'cloud-meu-configuration/'+ cloudMeuConfiguration.id + '/edit'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'cloud-meu-zip/'+ cloudMeuZip.id + '/edit'} }]"
                                 replaceUrl="true"
                                 queryParamsHandling="merge"
                                 class="btn btn-primary btn-sm">
@@ -50,7 +47,7 @@
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'cloud-meu-configuration/'+ cloudMeuConfiguration.id + '/delete'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'cloud-meu-zip/'+ cloudMeuZip.id + '/delete'} }]"
                                 replaceUrl="true"
                                 queryParamsHandling="merge"
                                 class="btn btn-danger btn-sm">

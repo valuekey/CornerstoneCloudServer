@@ -6,37 +6,37 @@ import { Observable } from 'rxjs/Observable';
 import { JhiEventManager } from 'ng-jhipster';
 
 import { CornerstoneCloudServerTestModule } from '../../../test.module';
-import { CloudMeuDialogComponent } from '../../../../../../main/webapp/app/entities/cloud-meu/cloud-meu-dialog.component';
-import { CloudMeuService } from '../../../../../../main/webapp/app/entities/cloud-meu/cloud-meu.service';
-import { CloudMeu } from '../../../../../../main/webapp/app/entities/cloud-meu/cloud-meu.model';
-import { CloudMeuZipService } from '../../../../../../main/webapp/app/entities/cloud-meu-zip';
+import { CloudMeuZipDialogComponent } from '../../../../../../main/webapp/app/entities/cloud-meu-zip/cloud-meu-zip-dialog.component';
+import { CloudMeuZipService } from '../../../../../../main/webapp/app/entities/cloud-meu-zip/cloud-meu-zip.service';
+import { CloudMeuZip } from '../../../../../../main/webapp/app/entities/cloud-meu-zip/cloud-meu-zip.model';
+import { CloudMeuService } from '../../../../../../main/webapp/app/entities/cloud-meu';
 
 describe('Component Tests', () => {
 
-    describe('CloudMeu Management Dialog Component', () => {
-        let comp: CloudMeuDialogComponent;
-        let fixture: ComponentFixture<CloudMeuDialogComponent>;
-        let service: CloudMeuService;
+    describe('CloudMeuZip Management Dialog Component', () => {
+        let comp: CloudMeuZipDialogComponent;
+        let fixture: ComponentFixture<CloudMeuZipDialogComponent>;
+        let service: CloudMeuZipService;
         let mockEventManager: any;
         let mockActiveModal: any;
 
         beforeEach(async(() => {
             TestBed.configureTestingModule({
                 imports: [CornerstoneCloudServerTestModule],
-                declarations: [CloudMeuDialogComponent],
+                declarations: [CloudMeuZipDialogComponent],
                 providers: [
-                    CloudMeuZipService,
-                    CloudMeuService
+                    CloudMeuService,
+                    CloudMeuZipService
                 ]
             })
-            .overrideTemplate(CloudMeuDialogComponent, '')
+            .overrideTemplate(CloudMeuZipDialogComponent, '')
             .compileComponents();
         }));
 
         beforeEach(() => {
-            fixture = TestBed.createComponent(CloudMeuDialogComponent);
+            fixture = TestBed.createComponent(CloudMeuZipDialogComponent);
             comp = fixture.componentInstance;
-            service = fixture.debugElement.injector.get(CloudMeuService);
+            service = fixture.debugElement.injector.get(CloudMeuZipService);
             mockEventManager = fixture.debugElement.injector.get(JhiEventManager);
             mockActiveModal = fixture.debugElement.injector.get(NgbActiveModal);
         });
@@ -46,9 +46,9 @@ describe('Component Tests', () => {
                 inject([],
                     fakeAsync(() => {
                         // GIVEN
-                        const entity = new CloudMeu(123);
+                        const entity = new CloudMeuZip(123);
                         spyOn(service, 'update').and.returnValue(Observable.of(new HttpResponse({body: entity})));
-                        comp.cloudMeu = entity;
+                        comp.cloudMeuZip = entity;
                         // WHEN
                         comp.save();
                         tick(); // simulate async
@@ -56,7 +56,7 @@ describe('Component Tests', () => {
                         // THEN
                         expect(service.update).toHaveBeenCalledWith(entity);
                         expect(comp.isSaving).toEqual(false);
-                        expect(mockEventManager.broadcastSpy).toHaveBeenCalledWith({ name: 'cloudMeuListModification', content: 'OK'});
+                        expect(mockEventManager.broadcastSpy).toHaveBeenCalledWith({ name: 'cloudMeuZipListModification', content: 'OK'});
                         expect(mockActiveModal.dismissSpy).toHaveBeenCalled();
                     })
                 )
@@ -66,9 +66,9 @@ describe('Component Tests', () => {
                 inject([],
                     fakeAsync(() => {
                         // GIVEN
-                        const entity = new CloudMeu();
+                        const entity = new CloudMeuZip();
                         spyOn(service, 'create').and.returnValue(Observable.of(new HttpResponse({body: entity})));
-                        comp.cloudMeu = entity;
+                        comp.cloudMeuZip = entity;
                         // WHEN
                         comp.save();
                         tick(); // simulate async
@@ -76,7 +76,7 @@ describe('Component Tests', () => {
                         // THEN
                         expect(service.create).toHaveBeenCalledWith(entity);
                         expect(comp.isSaving).toEqual(false);
-                        expect(mockEventManager.broadcastSpy).toHaveBeenCalledWith({ name: 'cloudMeuListModification', content: 'OK'});
+                        expect(mockEventManager.broadcastSpy).toHaveBeenCalledWith({ name: 'cloudMeuZipListModification', content: 'OK'});
                         expect(mockActiveModal.dismissSpy).toHaveBeenCalled();
                     })
                 )
